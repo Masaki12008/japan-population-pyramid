@@ -236,21 +236,33 @@ export default function PopulationPyramid() {
           return (
             <div key={ag} style={{ display: "flex", alignItems: "center", marginBottom: 2, gap: 4 }}>
               <div style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
-                <div style={{
-                  width: barWidth(mVal), height: 13,
-                  background: isEstimate ? "linear-gradient(to left, #5b8dd9, #3a6bc4)" : "linear-gradient(to left, #7eb8f7, #5590e0)",
-                  borderRadius: "3px 0 0 3px", transition: "width 0.45s cubic-bezier(0.4,0,0.2,1)", opacity: 0.85,
-                }} />
+                <div
+                  title={`男性 ${ag}歳：${(mVal / 10).toFixed(1)}万人`}
+                  style={{
+                    width: barWidth(mVal), height: 13,
+                    background: isEstimate ? "linear-gradient(to left, #5b8dd9, #3a6bc4)" : "linear-gradient(to left, #7eb8f7, #5590e0)",
+                    borderRadius: "3px 0 0 3px", transition: "width 0.45s cubic-bezier(0.4,0,0.2,1)", opacity: 0.85,
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = "1"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "0.85"}
+                />
               </div>
               <div style={{ width: 44, textAlign: "center", fontSize: 9, color: "#6b7db3", flexShrink: 0, fontFamily: "monospace" }}>
                 {ag}
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{
-                  width: barWidth(fVal), height: 13,
-                  background: isEstimate ? "linear-gradient(to right, #c2637a, #a0415e)" : "linear-gradient(to right, #f48fb1, #e06090)",
-                  borderRadius: "0 3px 3px 0", transition: "width 0.45s cubic-bezier(0.4,0,0.2,1)", opacity: 0.85,
-                }} />
+                <div
+                  title={`女性 ${ag}歳：${(fVal / 10).toFixed(1)}万人`}
+                  style={{
+                    width: barWidth(fVal), height: 13,
+                    background: isEstimate ? "linear-gradient(to right, #c2637a, #a0415e)" : "linear-gradient(to right, #f48fb1, #e06090)",
+                    borderRadius: "0 3px 3px 0", transition: "width 0.45s cubic-bezier(0.4,0,0.2,1)", opacity: 0.85,
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = "1"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "0.85"}
+                />
               </div>
             </div>
           );
