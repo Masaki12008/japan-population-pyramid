@@ -170,7 +170,7 @@ export default function PopulationPyramid() {
         }}>
           <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 4, letterSpacing: "0.08em", fontFamily: "monospace" }}>総人口</div>
           <div style={{ fontSize: 18, fontWeight: 700, color: "#c8d4f0", fontFamily: "monospace", lineHeight: 1.1 }}>
-            {Math.round(stats.total * 10).toLocaleString()}<span style={{ fontSize: 10, fontWeight: 400 }}> 万人</span>
+            {(stats.total * 10 / 10000).toFixed(2)}<span style={{ fontSize: 10, fontWeight: 400 }}> 億人</span>
           </div>
           <div style={{ display: "flex", justifyContent: "center", gap: 10, marginTop: 5 }}>
             <div style={{ fontSize: 10, fontFamily: "monospace", color: "#7eb8f7" }}>
