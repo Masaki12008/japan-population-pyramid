@@ -264,10 +264,8 @@ export default function PopulationPyramid() {
           onChange={e => setYearIndex(Number(e.target.value))}
           style={{ width: "100%", accentColor: isEstimate ? "#f0a050" : "#7eb8f7", height: 4, cursor: "pointer" }}
         />
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: "#4a5570", fontFamily: "monospace", marginTop: 4 }}>
-          {YEARS.map((y, i) => (
-            <span key={y} style={{ visibility: i % 2 === 0 || i === YEARS.length - 1 ? "visible" : "hidden" }}>{y}</span>
-          ))}
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8, color: "#4a5570", fontFamily: "monospace", marginTop: 4 }}>
+          {YEARS.map(y => <span key={y}>{y}</span>)}
         </div>
       </div>
 
