@@ -150,7 +150,7 @@ export default function PopulationPyramid() {
       <div style={{ textAlign: "center", marginBottom: 14 }}>
         <span style={{
           fontSize: "clamp(42px, 10vw, 70px)", fontWeight: 700, letterSpacing: "-0.03em",
-          color: isEstimate ? "#f0a050" : "#7eb8f7", fontFamily: "'Georgia', serif", lineHeight: 1, transition: "color 0.4s",
+          color: isEstimate ? "#f0a050" : "#7eb8f7", fontFamily: "'Courier New', monospace", lineHeight: 1, transition: "color 0.4s",
         }}>{year}</span>
         <span style={{
           display: "inline-block", marginLeft: 8, fontSize: 11, padding: "3px 10px", borderRadius: 20,
