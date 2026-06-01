@@ -75,13 +75,13 @@ function StatCard({ label, value, sub, color, small }) {
       flex: 1,
       minWidth: 0,
     }}>
-      <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 3, letterSpacing: "0.08em", fontFamily: "monospace", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+      <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 3, letterSpacing: "0.08em", fontFamily: "'JetBrains Mono', monospace", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
         {label}
       </div>
-      <div style={{ fontSize: small ? 16 : 18, fontWeight: 700, color: color || "#c8d4f0", fontFamily: "monospace", lineHeight: 1.2 }}>
+      <div style={{ fontSize: small ? 16 : 18, fontWeight: 700, color: color || "#c8d4f0", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.2 }}>
         {value}
       </div>
-      {sub && <div style={{ fontSize: 9, color: "#4a5570", marginTop: 2, fontFamily: "monospace" }}>{sub}</div>}
+      {sub && <div style={{ fontSize: 9, color: "#4a5570", marginTop: 2, fontFamily: "'JetBrains Mono', monospace" }}>{sub}</div>}
     </div>
   );
 }
@@ -92,6 +92,14 @@ export default function PopulationPyramid() {
   const [pendingPlay, setPendingPlay] = useState(false);
   const intervalRef = useRef(null);
   const prevDataRef = useRef(null);
+
+  // Google Fonts読み込み
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+  }, []);
 
   const year = YEARS[yearIndex];
   const data = POPULATION_DATA[year];
@@ -129,19 +137,19 @@ export default function PopulationPyramid() {
       minHeight: "100vh",
       background: "#0a0e1a",
       color: "#e8eaf2",
-      fontFamily: "'Georgia', 'Noto Serif JP', serif",
+      fontFamily: "'Inter', sans-serif",
       padding: "20px 14px",
       boxSizing: "border-box",
     }}>
       {/* ヘッダー */}
       <div style={{ textAlign: "center", marginBottom: 16 }}>
-        <div style={{ fontSize: 10, letterSpacing: "0.25em", color: "#6b7db3", textTransform: "uppercase", marginBottom: 4, fontFamily: "monospace" }}>
+        <div style={{ fontSize: 10, letterSpacing: "0.25em", color: "#6b7db3", textTransform: "uppercase", marginBottom: 4, fontFamily: "'JetBrains Mono', monospace" }}>
           Japan Population Structure
         </div>
         <h1 style={{ margin: 0, fontSize: "clamp(18px, 4vw, 28px)", fontWeight: 400, letterSpacing: "0.05em", color: "#c8d4f0" }}>
           日本の人口ピラミッド
         </h1>
-        <div style={{ marginTop: 4, fontSize: 10, color: "#4a5570", fontFamily: "monospace" }}>
+        <div style={{ marginTop: 4, fontSize: 10, color: "#4a5570", fontFamily: "'Inter', sans-serif" }}>
           出典：国勢調査 / 社人研2023年推計
         </div>
       </div>
@@ -150,14 +158,14 @@ export default function PopulationPyramid() {
       <div style={{ textAlign: "center", marginBottom: 14 }}>
         <span style={{
           fontSize: "clamp(42px, 10vw, 70px)", fontWeight: 700, letterSpacing: "-0.03em",
-          color: isEstimate ? "#f0a050" : "#7eb8f7", fontFamily: "'Courier New', monospace", lineHeight: 1, transition: "color 0.4s",
+          color: isEstimate ? "#f0a050" : "#7eb8f7", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1, transition: "color 0.4s",
         }}>{year}</span>
         <span style={{
           display: "inline-block", marginLeft: 8, fontSize: 11, padding: "3px 10px", borderRadius: 20,
           background: isEstimate ? "rgba(240,160,80,0.15)" : "rgba(126,184,247,0.15)",
           color: isEstimate ? "#f0a050" : "#7eb8f7",
           border: `1px solid ${isEstimate ? "rgba(240,160,80,0.3)" : "rgba(126,184,247,0.3)"}`,
-          verticalAlign: "middle", fontFamily: "monospace", transition: "all 0.4s",
+          verticalAlign: "middle", fontFamily: "'JetBrains Mono', monospace", transition: "all 0.4s",
         }}>{data.type}</span>
       </div>
 
@@ -168,15 +176,15 @@ export default function PopulationPyramid() {
           background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: 10, padding: "8px 12px", flex: 1.2, textAlign: "center",
         }}>
-          <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 4, letterSpacing: "0.08em", fontFamily: "monospace" }}>総人口</div>
-          <div style={{ fontSize: 18, fontWeight: 700, color: "#c8d4f0", fontFamily: "monospace", lineHeight: 1.1 }}>
+          <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 4, letterSpacing: "0.08em", fontFamily: "'JetBrains Mono', monospace" }}>総人口</div>
+          <div style={{ fontSize: 18, fontWeight: 700, color: "#c8d4f0", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.1 }}>
             {(stats.total / 100000).toFixed(2)}<span style={{ fontSize: 10, fontWeight: 400 }}> 億人</span>
           </div>
           <div style={{ display: "flex", justifyContent: "center", gap: 10, marginTop: 5 }}>
-            <div style={{ fontSize: 10, fontFamily: "monospace", color: "#7eb8f7" }}>
+            <div style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: "#7eb8f7" }}>
               ♂ {Math.round(stats.totalM / 10).toLocaleString()}万
             </div>
-            <div style={{ fontSize: 10, fontFamily: "monospace", color: "#f48fb1" }}>
+            <div style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: "#f48fb1" }}>
               ♀ {Math.round(stats.totalF / 10).toLocaleString()}万
             </div>
           </div>
@@ -187,16 +195,16 @@ export default function PopulationPyramid() {
           background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: 10, padding: "8px 12px", flex: 1.2, textAlign: "center",
         }}>
-          <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 4, letterSpacing: "0.08em", fontFamily: "monospace" }}>平均年齢</div>
+          <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 4, letterSpacing: "0.08em", fontFamily: "'JetBrains Mono', monospace" }}>平均年齢</div>
           <div style={{ display: "flex", justifyContent: "center", gap: 6 }}>
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 9, color: "#7eb8f7", fontFamily: "monospace" }}>男性</div>
-              <div style={{ fontSize: 17, fontWeight: 700, color: "#7eb8f7", fontFamily: "monospace" }}>{stats.avgMale}</div>
+              <div style={{ fontSize: 9, color: "#7eb8f7", fontFamily: "'JetBrains Mono', monospace" }}>男性</div>
+              <div style={{ fontSize: 17, fontWeight: 700, color: "#7eb8f7", fontFamily: "'JetBrains Mono', monospace" }}>{stats.avgMale}</div>
             </div>
             <div style={{ color: "#3a4560", fontSize: 20, lineHeight: "36px" }}>|</div>
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 9, color: "#f48fb1", fontFamily: "monospace" }}>女性</div>
-              <div style={{ fontSize: 17, fontWeight: 700, color: "#f48fb1", fontFamily: "monospace" }}>{stats.avgFemale}</div>
+              <div style={{ fontSize: 9, color: "#f48fb1", fontFamily: "'JetBrains Mono', monospace" }}>女性</div>
+              <div style={{ fontSize: 17, fontWeight: 700, color: "#f48fb1", fontFamily: "'JetBrains Mono', monospace" }}>{stats.avgFemale}</div>
             </div>
           </div>
         </div>
@@ -206,11 +214,11 @@ export default function PopulationPyramid() {
           background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: 10, padding: "8px 12px", flex: 1, textAlign: "center",
         }}>
-          <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 4, letterSpacing: "0.08em", fontFamily: "monospace" }}>合計特殊出生率</div>
-          <div style={{ fontSize: 18, fontWeight: 700, color: tfr >= 2.07 ? "#81c784" : tfr >= 1.5 ? "#ffcc80" : "#ef9a9a", fontFamily: "monospace", lineHeight: 1.1 }}>
+          <div style={{ fontSize: 9, color: "#6b7db3", marginBottom: 4, letterSpacing: "0.08em", fontFamily: "'JetBrains Mono', monospace" }}>合計特殊出生率</div>
+          <div style={{ fontSize: 18, fontWeight: 700, color: tfr >= 2.07 ? "#81c784" : tfr >= 1.5 ? "#ffcc80" : "#ef9a9a", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.1 }}>
             {tfr.toFixed(2)}
           </div>
-          <div style={{ fontSize: 9, color: "#4a5570", marginTop: 4, fontFamily: "monospace" }}>
+          <div style={{ fontSize: 9, color: "#4a5570", marginTop: 4, fontFamily: "'JetBrains Mono', monospace" }}>
             {tfr >= 2.07 ? "維持水準↑" : tfr >= 1.5 ? "低下傾向" : "超少子化"}
           </div>
         </div>
@@ -226,8 +234,8 @@ export default function PopulationPyramid() {
       {/* ピラミッド本体 */}
       <div style={{ maxWidth: 680, margin: "0 auto 18px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8, paddingLeft: 52 }}>
-          <span style={{ fontSize: 11, color: "#7eb8f7", letterSpacing: "0.1em", fontFamily: "monospace" }}>← 男性</span>
-          <span style={{ fontSize: 11, color: "#f48fb1", letterSpacing: "0.1em", fontFamily: "monospace" }}>女性 →</span>
+          <span style={{ fontSize: 11, color: "#7eb8f7", letterSpacing: "0.1em", fontFamily: "'JetBrains Mono', monospace" }}>← 男性</span>
+          <span style={{ fontSize: 11, color: "#f48fb1", letterSpacing: "0.1em", fontFamily: "'JetBrains Mono', monospace" }}>女性 →</span>
         </div>
         {[...AGE_GROUPS].reverse().map((ag, ri) => {
           const i = AGE_GROUPS.length - 1 - ri;
@@ -248,7 +256,7 @@ export default function PopulationPyramid() {
                   onMouseLeave={e => e.currentTarget.style.opacity = "0.85"}
                 />
               </div>
-              <div style={{ width: 44, textAlign: "center", fontSize: 9, color: "#6b7db3", flexShrink: 0, fontFamily: "monospace" }}>
+              <div style={{ width: 44, textAlign: "center", fontSize: 9, color: "#6b7db3", flexShrink: 0, fontFamily: "'JetBrains Mono', monospace" }}>
                 {ag}
               </div>
               <div style={{ flex: 1 }}>
@@ -276,7 +284,7 @@ export default function PopulationPyramid() {
           onChange={e => setYearIndex(Number(e.target.value))}
           style={{ width: "100%", accentColor: isEstimate ? "#f0a050" : "#7eb8f7", height: 4, cursor: "pointer" }}
         />
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8, color: "#4a5570", fontFamily: "monospace", marginTop: 4 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8, color: "#4a5570", fontFamily: "'JetBrains Mono', monospace", marginTop: 4 }}>
           {YEARS.map(y => <span key={y}>{y}</span>)}
         </div>
       </div>
@@ -303,7 +311,7 @@ export default function PopulationPyramid() {
         ].map(l => (
           <div key={l.label} style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <div style={{ width: 12, height: 12, borderRadius: 2, background: l.color }} />
-            <span style={{ fontSize: 11, color: "#6b7db3", fontFamily: "monospace" }}>{l.label}</span>
+            <span style={{ fontSize: 11, color: "#6b7db3", fontFamily: "'JetBrains Mono', monospace" }}>{l.label}</span>
           </div>
         ))}
       </div>
@@ -315,6 +323,6 @@ function btnStyle(bg, color = "#c8d4f0") {
   return {
     background: bg, border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8,
     color, padding: "8px 18px", fontSize: 13, cursor: "pointer",
-    fontFamily: "monospace", letterSpacing: "0.05em", transition: "all 0.2s",
+    fontFamily: "'Inter', sans-serif", letterSpacing: "0.05em", transition: "all 0.2s",
   };
 }
