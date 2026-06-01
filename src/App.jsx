@@ -174,10 +174,10 @@ export default function PopulationPyramid() {
           </div>
           <div style={{ display: "flex", justifyContent: "center", gap: 10, marginTop: 5 }}>
             <div style={{ fontSize: 10, fontFamily: "monospace", color: "#7eb8f7" }}>
-              ♂ {Math.round(stats.totalM / 100).toLocaleString()}万
+              ♂ {Math.round(stats.totalM / 10).toLocaleString()}万
             </div>
             <div style={{ fontSize: 10, fontFamily: "monospace", color: "#f48fb1" }}>
-              ♀ {Math.round(stats.totalF / 100).toLocaleString()}万
+              ♀ {Math.round(stats.totalF / 10).toLocaleString()}万
             </div>
           </div>
         </div>
